@@ -16,14 +16,15 @@
 #    in .: ltmain.sh
 #    in m4: libtool.m4 ltoptions.m4 ltsugar.m4 ltversion.m4 lt~obsolete.m4
 
+echo "It'd probably be better to just run \`autoreconf' with your favorite flags, but whatever..."
 set -ex
 rm -rf autom4te.cache
 
-aclocal --force -I m4
+test -x `which aclocal` && aclocal --force -I m4
 #grep -q LIBTOOL configure.ac && libtoolize -c -f
-autoconf -f -W all,no-obsolete
-autoheader -f -W all
-automake -a -c -f -W all
+test -x `which autoconf` && autoconf -f -W all,no-obsolete
+test -x `which autoheader` && autoheader -f -W all
+test -x `which automake` && automake -a -c -f -W all
 
 rm -rf autom4te.cache
 exit 0
