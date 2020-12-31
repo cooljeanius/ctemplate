@@ -1,4 +1,4 @@
-// Copyright 2011 Google Inc. All Rights Reserved.
+// macros.h: Copyright 2011 Google Inc. All Rights Reserved. -*- C++ -*-
 // Author: csilvers@google.com (Craig Silverstein)
 //
 // Provides macros and typedefs based on config.h settings.

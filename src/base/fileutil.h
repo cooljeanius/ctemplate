@@ -1,4 +1,4 @@
-// Copyright (c) 2011, Google Inc.
+// fileutil.h: Copyright (c) 2011, Google Inc. -*- C++ -*-
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without

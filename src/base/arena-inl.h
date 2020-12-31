@@ -1,4 +1,4 @@
-// Copyright (c) 2000, Google Inc.
+// arena-inl.h: Copyright (c) 2000, Google Inc. -*- C++ -*-
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without

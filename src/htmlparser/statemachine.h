@@ -1,4 +1,4 @@
-/* Copyright (c) 2007, Google Inc.
+/* statemachine.h: Copyright (c) 2007, Google Inc. -*- C++ -*-
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without

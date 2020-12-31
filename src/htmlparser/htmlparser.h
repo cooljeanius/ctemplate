@@ -1,4 +1,4 @@
-/*
+/* htmlparser.h -*- C++ -*-
  * Copyright (c) 2007, Google Inc.
  * All rights reserved.
  *

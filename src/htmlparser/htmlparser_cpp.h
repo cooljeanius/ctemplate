@@ -1,4 +1,4 @@
-// Copyright (c) 2007, Google Inc.
+// htmlparser_cpp.h: Copyright (c) 2007, Google Inc. -*- C++ -*-
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without

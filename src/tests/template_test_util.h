@@ -1,4 +1,4 @@
-// Copyright (c) 2006, Google Inc.
+// template_test_util.h: Copyright (c) 2006, Google Inc. -*- C++ -*-
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
