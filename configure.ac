@@ -15,8 +15,9 @@ SO_VERSION=2:1:0
 # (for sanity checking)
 AC_CONFIG_SRCDIR([README])
 AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_AUX_DIR([build-aux])
 AC_CANONICAL_HOST
-AM_INIT_AUTOMAKE([foreign dist-zip])
+AM_INIT_AUTOMAKE([foreign dist-zip subdir-objects])
 AM_MAINTAINER_MODE
 AC_CONFIG_HEADERS([src/config.h])
 
@@ -27,7 +28,7 @@ AC_PROG_CC
 AM_PROG_CC_C_O
 AC_PROG_CPP
 AC_PROG_RANLIB
-AM_CONDITIONAL([GCC], [test "$GCC" = yes])   # let the Makefile know if we're gcc
+AM_CONDITIONAL([GCC],[test "$GCC" = yes])  # let the Makefile know if we're gcc
 
 # MinGW uses autoconf, but also needs the windows shim routines
 # (since it doesn't have its own support for, say, pthreads).
@@ -54,8 +55,8 @@ AM_CONDITIONAL([MINGW], [expr $host : '.*-mingw' >/dev/null 2>&1])
 
 # Uncomment this if you'll be exporting libraries (.so's)
 AC_PROG_LIBTOOL
-AC_SUBST(LIBTOOL_DEPS)
-AC_SUBST(SO_VERSION)
+AC_SUBST([LIBTOOL_DEPS])dnl
+AC_SUBST([SO_VERSION])dnl
 
 AC_PROG_LN_S
 
@@ -63,7 +64,7 @@ AX_C___ATTRIBUTE__
 
 # Check whether some low-level functions/files are available
 AC_HEADER_STDC
-AC_CHECK_HEADERS([stddef.h])
+AC_CHECK_HEADERS([stddef.h])dnl
 
 # Defines PRIuS
 AC_COMPILER_CHARACTERISTICS
@@ -80,7 +81,7 @@ AC_CHECK_TYPES([u_int32_t])
 AC_CHECK_TYPES([__int32])
 AC_CHECK_TYPES([uint64_t])
 AC_CHECK_TYPES([u_int64_t])
-AC_CHECK_TYPES([__int64])
+AC_CHECK_TYPES([__int64])dnl
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_CHECK_HEADER_STDBOOL
@@ -89,7 +90,7 @@ AC_TYPE_OFF_T
 AC_TYPE_SIZE_T
 AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
-AC_CHECK_TYPES([ptrdiff_t])
+AC_CHECK_TYPES([ptrdiff_t])dnl
 
 AC_HEADER_DIRENT               # for template_unittest.cc, template_regtest.cc
 
@@ -106,7 +107,8 @@ AC_CHECK_HEADERS([sys/isa_defs.h])          # Solaris 10
 # Checks for library functions.
 AC_FUNC_ERROR_AT_LINE
 AC_FUNC_MALLOC
-AC_CHECK_FUNCS([getcwd getpagesize memchr memset mkdir strcasecmp strchr strcspn strerror strncasecmp strstr strtol utime])
+AC_CHECK_FUNCS([getcwd getpagesize memchr memset mkdir strcasecmp strchr \
+                strcspn strerror strncasecmp strstr strtol utime])dnl
 
 # A lot of the code in this directory depends on pthreads
 ACX_PTHREAD
@@ -124,7 +126,7 @@ AC_INTERLOCKED_EXCHANGE_NONVOLATILE
 # Find out what namespace 'normal' STL code lives in, and also what namespace
 # the user wants our classes to be defined in
 AC_CXX_STL_NAMESPACE
-AC_DEFINE_GOOGLE_NAMESPACE([ctemplate])
+AC_DEFINE_GOOGLE_NAMESPACE([ctemplate])dnl
 
 # Figures out where hash_map and hash_set live, and what namespace they use
 AC_CXX_STL_HASH
@@ -184,23 +186,23 @@ AC_TRY_LINK([], [ extern char _start[];
                   extern char dummy[]  __attribute__((weak));
                   return (_start && data_start && dummy); ],
             [ ac_have_attribute_weak=1 ], [ ac_have_attribute_weak=0 ])
-AC_SUBST([ac_have_attribute_weak])
+AC_SUBST([ac_have_attribute_weak])dnl
 
 # In unix (that is, using this script), this dll-export stuff will always
 # be the empty string.  In windows, we'll replace it with windows-specific
 # text.
-ac_windows_dllexport_defines=
-ac_windows_dllexport=
-AC_SUBST([ac_windows_dllexport_defines])
-AC_SUBST([ac_windows_dllexport])
+ac_windows_dllexport_defines=""
+ac_windows_dllexport=""
+AC_SUBST([ac_windows_dllexport_defines])dnl
+AC_SUBST([ac_windows_dllexport])dnl
 
 # This will (should) never change, but we put it here so if we do need
 # to change it, to avoid naming conflicts or something, it's easy to
 # do in one place.
 ac_htmlparser_namespace=google_ctemplate_streamhtmlparser
 AC_SUBST([ac_htmlparser_namespace])
-AC_DEFINE_UNQUOTED(HTMLPARSER_NAMESPACE, $ac_htmlparser_namespace,
-                   [The namespace to put the htmlparser code.])
+AC_DEFINE_UNQUOTED([HTMLPARSER_NAMESPACE],[${ac_htmlparser_namespace}],
+                   [The namespace to put the htmlparser code.])dnl
 
 # Write generated configuration file, and also .h files
 AC_CONFIG_FILES([Makefile \

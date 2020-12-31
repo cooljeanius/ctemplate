@@ -5,13 +5,13 @@
 #define GOOGLE_NAMESPACE ::ctemplate
 
 /* the location of <unordered_map> or <hash_map> */
-#define HASH_MAP_H <tr1/unordered_map>
+#define HASH_MAP_H <unordered_map>
 
 /* the namespace of hash_map/hash_set */
-#define HASH_NAMESPACE std::tr1
+#define HASH_NAMESPACE std
 
 /* the location of <unordered_set> or <hash_set> */
-#define HASH_SET_H <tr1/unordered_set>
+#define HASH_SET_H <unordered_set>
 
 /* Define to 1 if you have the <byteswap.h> header file. */
 /* #undef HAVE_BYTESWAP_H */
@@ -63,9 +63,6 @@
 /* Define to 1 if you have the `memchr' function. */
 #define HAVE_MEMCHR 1
 
-/* Define to 1 if you have the <memory.h> header file. */
-#define HAVE_MEMORY_H 1
-
 /* Define to 1 if you have the `memset' function. */
 #define HAVE_MEMSET 1
 
@@ -92,6 +89,9 @@
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #define HAVE_STDINT_H 1
+
+/* Define to 1 if you have the <stdio.h> header file. */
+#define HAVE_STDIO_H 1
 
 /* Define to 1 if you have the <stdlib.h> header file. */
 #define HAVE_STDLIB_H 1
@@ -188,12 +188,8 @@
 /* define if first argument to InterlockedExchange is just LONG */
 #define INTERLOCKED_EXCHANGE_NONVOLATILE 1
 
-/* Define to the sub-directory in which libtool stores uninstalled libraries.
-   */
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
 #define LT_OBJDIR ".libs/"
-
-/* Define to 1 if your C compiler doesn't accept -c and -o together. */
-/* #undef NO_MINUS_C_MINUS_O */
 
 /* Name of package */
 #define PACKAGE "ctemplate"
@@ -229,7 +225,9 @@
    your system. */
 /* #undef PTHREAD_CREATE_JOINABLE */
 
-/* Define to 1 if you have the ANSI C header files. */
+/* Define to 1 if all of the C90 standard headers exist (not just the ones
+   required in a freestanding environment). This macro is provided for
+   backward compatibility; new code need not use it. */
 #define STDC_HEADERS 1
 
 /* the namespace where STL code like vector<> is defined */

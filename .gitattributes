@@ -1,0 +1,15 @@
+build-aux/ar-lib linguist-vendored
+build-aux/compile linguist-vendored
+build-aux/config.guess linguist-vendored
+build-aux/config.sub linguist-vendored
+build-aux/depcomp linguist-vendored
+build-aux/install-sh linguist-vendored
+build-aux/ltmain.sh linguist-vendored
+build-aux/missing linguist-vendored
+build-aux/test-driver linguist-vendored
+m4/libtool.m4 linguist-vendored
+m4/ltoptions.m4 linguist-vendored
+m4/ltsugar.m4 linguist-vendored
+m4/ltversion.m4 linguist-vendored
+m4/lt~obsolete.m4 linguist-vendored
+ChangeLog    merge=cl-merge

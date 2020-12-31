@@ -1,7 +1,7 @@
 ## Process this file with automake to produce Makefile.in
 
 # Make sure that when we re-make ./configure, we get the macros we need
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = -I m4 --install
 
 # This is so we can #include <ctemplate/foo>
 AM_CPPFLAGS = -I$(top_srcdir)/src

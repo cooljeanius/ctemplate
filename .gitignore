@@ -1,5 +1,8 @@
 *DS_Store*
-*deps/*.*o
+.deps/*
+*/.deps/*
+*/*/.deps/*
+.dirstamp
 *.o
 *.dylib
 *.a

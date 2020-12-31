@@ -20,11 +20,10 @@ echo "It'd probably be better to just run \`autoreconf' with your favorite flags
 set -ex
 rm -rf autom4te.cache
 
-test -x `which aclocal` && aclocal --force -I m4
-#grep -q LIBTOOL configure.ac && libtoolize -c -f
-test -x `which autoconf` && autoconf -f -W all,no-obsolete
-test -x `which autoheader` && autoheader -f -W all
-test -x `which automake` && automake -a -c -f -W all
+test -n "`which aclocal`" && test -x "`which aclocal`" && aclocal --force -I m4
+test -n "`which autoconf`" && test -x "`which autoconf`" && autoconf -f -W all,no-obsolete
+test -n "`which autoheader`" && test -x "`which autoheader`" && autoheader -f -W all
+test -n "`which automake`" && test -x "`which automake`" && automake -a -c -f -W all
 
 rm -rf autom4te.cache
 exit 0
