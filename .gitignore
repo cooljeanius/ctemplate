@@ -12,6 +12,7 @@
 *libs/*
 *.cache
 *.log
+# config.status should be caught further below
 */.svn/*
 */*/.svn/*
 */*/*/.svn/*
@@ -48,3 +49,5 @@ generate_fsm_c_test
 *.userprefs
 confdefs.h
 *.status
+Makefile
+src/config.h
