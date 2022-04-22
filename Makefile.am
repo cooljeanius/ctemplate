@@ -10,6 +10,8 @@ AM_CPPFLAGS = -I$(top_srcdir)/src
 if GCC
 AM_CXXWARNFLAGS = -Wall -Wwrite-strings -Woverloaded-virtual -Wno-sign-compare \
     -Wno-unused
+## FIXME: clang needs to compile with a standard from before C++11 to work, but gcc
+## needs to compile with a standard from after...
 AM_CXXFLAGS = $(AM_CXXWARNFLAGS) -std=gnu++03
 endif
 
