@@ -1095,7 +1095,7 @@ LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
-LIBTOOL_DEPS = @LIBTOOL_DEPS@
+LIBTOOL_DEPS = @LIBTOOL_DEPS@ m4/libtool.m4
 LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
@@ -1206,7 +1206,10 @@ ACLOCAL_AMFLAGS = -I m4 --install
 AM_CPPFLAGS = -I$(top_srcdir)/src
 
 # These are good warnings to turn on by default
-@GCC_TRUE@AM_CXXFLAGS = -Wall -Wwrite-strings -Woverloaded-virtual -Wno-sign-compare
+@GCC_TRUE@AM_CXXWARNFLAGS = -Wall -Wwrite-strings -Woverloaded-virtual -Wno-sign-compare \
+@GCC_TRUE@    -Wno-unused
+
+@GCC_TRUE@AM_CXXFLAGS = $(AM_CXXWARNFLAGS) -std=gnu++03
 @MINGW_FALSE@TMPDIR = /tmp
 
 # mingw does weird directory munging on /tmp, which causes some of our
@@ -1523,6 +1526,7 @@ htmlparser_nothreads_test_SOURCES = $(htmlparser_test_SOURCES)
 htmlparser_nothreads_test_CXXFLAGS = -DNO_THREADS $(AM_CXXFLAGS)
 htmlparser_nothreads_test_LDADD = libctemplate_nothreads_debug.la
 CLEANFILES = statemachine.c $(pkgconfig_DATA)
+DISTCLEANFILES = *~ autoscan.log build-aux/*~ m4/*~ src/*~
 statemachine_test_SOURCES = src/tests/statemachine_test.c \
                             statemachine.c
 
@@ -3613,6 +3617,7 @@ distclean-generic:
 	-rm -f src/tests/$(am__dirstamp)
 	-rm -f src/windows/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/windows/$(am__dirstamp)
+	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -3711,7 +3716,7 @@ distclean: distclean-am
 	-rm -f src/windows/$(DEPDIR)/libctemplate_nothreads_la-port.Plo
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
-	distclean-hdr distclean-libtool distclean-tags
+	distclean-hdr distclean-libtool distclean-local distclean-tags
 
 dvi: dvi-am
 
@@ -3873,10 +3878,10 @@ uninstall-am: uninstall-binPROGRAMS uninstall-binSCRIPTS \
 	dist-gzip dist-hook dist-lzip dist-shar dist-tarZ dist-xz \
 	dist-zip dist-zstd distcheck distclean distclean-compile \
 	distclean-generic distclean-hdr distclean-libtool \
-	distclean-tags distcleancheck distdir distuninstallcheck dvi \
-	dvi-am html html-am info info-am install install-am \
-	install-binPROGRAMS install-binSCRIPTS install-data \
-	install-data-am install-dist_docDATA install-dvi \
+	distclean-local distclean-tags distcleancheck distdir \
+	distuninstallcheck dvi dvi-am html html-am info info-am \
+	install install-am install-binPROGRAMS install-binSCRIPTS \
+	install-data install-data-am install-dist_docDATA install-dvi \
 	install-dvi-am install-exec install-exec-am install-html \
 	install-html-am install-info install-info-am \
 	install-libLTLIBRARIES install-man \
@@ -3919,6 +3924,9 @@ installcheck-local:
 
 statemachine.c: src/htmlparser/statemachine.cc
 	$(LN_S) src/htmlparser/statemachine.cc $@
+
+distclean-local:
+	-rm -rfv autom4te.cache || rmdir autom4te.cache
 generate_fsm_test_sh: src/tests/generate_fsm_test.sh \
                       src/tests/htmlparser_testdata/sample_fsm.config \
                       src/tests/htmlparser_testdata/sample_fsm.c \
@@ -3966,7 +3974,6 @@ lib${PACKAGE}_nothreads.pc: lib${PACKAGE}.pc
 dist-hook:
 	test -e "$(distdir)/vsprojects" \
 	   && chmod -R u+w $(distdir)/*.sln $(distdir)/vsprojects/
-
 libtool: $(LIBTOOL_DEPS)
 	$(SHELL) ./config.status --recheck
 

@@ -1,3 +1,4 @@
+# namespaces.m4 serial 1
 # Checks whether the compiler implements namespaces
 AC_DEFUN([AC_CXX_NAMESPACES],
  [AC_CACHE_CHECK(whether the compiler implements namespaces,

@@ -63,6 +63,7 @@ AM_CONDITIONAL([MINGW],[expr ${host} : '.*-mingw' >/dev/null 2>&1])dnl
 LT_INIT([dlopen win32-dll])dnl
 AC_SUBST([LIBTOOL_DEPS])dnl
 AC_SUBST([SO_VERSION])dnl
+LT_PREREQ([2.4.7])dnl
 
 AC_PROG_LN_S
 

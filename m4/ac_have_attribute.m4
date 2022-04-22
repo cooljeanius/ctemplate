@@ -1,3 +1,5 @@
+# ac_have_attribute.m4 serial 1
+
 AC_DEFUN([AX_C___ATTRIBUTE__], [
   AC_MSG_CHECKING(for __attribute__)
   AC_CACHE_VAL(ac_cv___attribute__, [

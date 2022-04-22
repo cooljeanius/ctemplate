@@ -1,3 +1,4 @@
+# compiler_characteristics.m4 serial 1
 # Check compiler characteristics (e.g. type sizes, PRIxx macros, ...)
 
 # If types $1 and $2 are compatible, perform action $3

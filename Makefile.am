@@ -8,7 +8,9 @@ AM_CPPFLAGS = -I$(top_srcdir)/src
 
 # These are good warnings to turn on by default
 if GCC
-AM_CXXFLAGS = -Wall -Wwrite-strings -Woverloaded-virtual -Wno-sign-compare
+AM_CXXWARNFLAGS = -Wall -Wwrite-strings -Woverloaded-virtual -Wno-sign-compare \
+    -Wno-unused
+AM_CXXFLAGS = $(AM_CXXWARNFLAGS) -std=gnu++03
 endif
 
 # mingw does weird directory munging on /tmp, which causes some of our
@@ -406,6 +408,11 @@ statemachine.c: src/htmlparser/statemachine.cc
 BUILT_SOURCES += statemachine.c
 CLEANFILES = statemachine.c
 
+DISTCLEANFILES = *~ autoscan.log build-aux/*~ m4/*~ src/*~
+
+distclean-local:
+	-rm -rfv autom4te.cache || rmdir autom4te.cache
+
 TESTS += statemachine_test
 WINDOWS_PROJECTS += vsprojects/statemachine_test/statemachine_test.vcproj
 statemachine_test_SOURCES = src/tests/statemachine_test.c \
@@ -489,7 +496,10 @@ dist-hook:
 	test -e "$(distdir)/vsprojects" \
 	   && chmod -R u+w $(distdir)/*.sln $(distdir)/vsprojects/
 
-## If you're using libtool, add 'libtool' here.  Also add this rule:
+## libtool dependencies; normally automatically substituted, but in case some got
+## missed, add some explicitly:
+LIBTOOL_DEPS = @LIBTOOL_DEPS@ m4/libtool.m4
+## If you are using libtool, add 'libtool' here.  Also add this rule:
 libtool: $(LIBTOOL_DEPS)
 	$(SHELL) ./config.status --recheck
 

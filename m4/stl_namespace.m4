@@ -1,3 +1,4 @@
+# stl_namespace.m4 serial 1
 # We check what namespace stl code like vector expects to be executed in
 
 AC_DEFUN([AC_CXX_STL_NAMESPACE],

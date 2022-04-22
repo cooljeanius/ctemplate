@@ -1,11 +1,12 @@
+# stl_hash.m4 serial 1
 # We check two things: where the include file is for
 # unordered_map/hash_map (we prefer the first form), and what
 # namespace unordered/hash_map lives in within that include file.  We
-# include AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[]])],[],[]) for all the combinations we've seen in the
-# wild.  We define HASH_MAP_H to the location of the header file, and
-# HASH_NAMESPACE to the namespace the class (unordered_map or
-# hash_map) is in.  We define HAVE_UNORDERED_MAP if the class we found
-# is named unordered_map, or leave it undefined if not.
+# include AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]],[[]])],[],[]) for all the
+# combinations we've seen in the wild.  We define HASH_MAP_H to the location
+# of the header file, and HASH_NAMESPACE to the namespace the class
+# (unordered_map or hash_map) is in.  We define HAVE_UNORDERED_MAP if the
+# class we found is named unordered_map, or leave it undefined if not.
 
 # This also checks if unordered map exists.
 AC_DEFUN([AC_CXX_STL_HASH],

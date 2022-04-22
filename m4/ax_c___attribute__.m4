@@ -43,7 +43,7 @@
 #   modified version of the Autoconf Macro, you may extend this special
 #   exception to the GPL to apply to your modified version as well.
 
-#serial 9
+#serial 10
 
 AC_DEFUN([AX_C___ATTRIBUTE__], [
   AC_CACHE_CHECK([for __attribute__], [ax_cv___attribute__],

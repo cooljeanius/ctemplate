@@ -49,6 +49,14 @@ statemachine_test
 generate_fsm_c_test
 *.userprefs
 confdefs.h
+conftest.c
+conftest.cpp
+conftest.err
+conftest.sym
+conftest*.o.tmp
+conf*/config.h
+conf*/*.awk
 *.status
 Makefile
 src/config.h
+*.pyc

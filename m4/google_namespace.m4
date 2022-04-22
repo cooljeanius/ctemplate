@@ -1,3 +1,4 @@
+# google_namespace.m4 serial 1
 # Allow users to override the namespace we define our application's classes in
 # Arg $1 is the default namespace to use if --enable-namespace isn't present.
 

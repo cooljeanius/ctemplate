@@ -1,3 +1,4 @@
+# ac_interlocked_exchange.m4 serial 1
 # Check whether InterlockedExchange() takes a LONG or a volatile LONG
 # as its first argument.  InterlockedCompareExchange is a windows
 # function; obviously, this macro is useful only for cygwin and mingw,

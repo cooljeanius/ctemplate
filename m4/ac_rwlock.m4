@@ -1,3 +1,4 @@
+# ac_rwlock.m4 serial 1
 # TODO(csilvers): it would be better to actually try to link against
 # -pthreads, to make sure it defines these methods, but that may be
 # too hard, since pthread support is really tricky.
