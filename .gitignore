@@ -18,6 +18,7 @@
 */*/*/.svn/*
 libtool
 *~
+*.bak
 *stamp-h*
 make_tpl_varnames_h
 diff_tpl_auto_escape

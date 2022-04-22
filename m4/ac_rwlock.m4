@@ -22,16 +22,14 @@ AC_DEFUN([AC_RWLOCK],
 [AC_CACHE_CHECK(support for pthread_rwlock_* functions,
 ac_cv_rwlock,
 [AC_LANG_SAVE
- AC_LANG_C
- AC_TRY_COMPILE([#define _XOPEN_SOURCE 500
+ AC_LANG([C])
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#define _XOPEN_SOURCE 500
                  #include <pthread.h>
                  #ifdef __CYGWIN32__
                  # error Cygwin has a bug in pthread_rwlock; disabling
-                 #endif],
-                [pthread_rwlock_t l; pthread_rwlock_init(&l, NULL);
+                 #endif]], [[pthread_rwlock_t l; pthread_rwlock_init(&l, NULL);
                  pthread_rwlock_rdlock(&l); 
-                 return 0;],
-                ac_cv_rwlock=yes, ac_cv_rwlock=no)
+                 return 0;]])],[ac_cv_rwlock=yes],[ac_cv_rwlock=no])
  AC_LANG_RESTORE
 ])
 if test "$ac_cv_rwlock" = yes; then

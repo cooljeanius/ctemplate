@@ -21,11 +21,11 @@ AC_DEFUN([AC_INTERLOCKED_EXCHANGE_NONVOLATILE],
 AC_MSG_CHECKING(whether first argument to InterlockedExchange omits volatile)
 AC_CACHE_VAL(ac_cv_interlocked_exchange_nonvolatile,
 [AC_LANG_SAVE
- AC_LANG_CPLUSPLUS
- AC_TRY_COMPILE([#include <windows.h>],
-                [volatile LONG once; InterlockedExchange(&once,  1);],
-                ac_cv_interlocked_exchange_nonvolatile="no",
-                ac_cv_interlocked_exchange_nonvolatile="yes")
+ AC_LANG([C++])
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <windows.h>]],[[
+ volatile LONG once; InterlockedExchange(&once,  1);]])],
+ [ac_cv_interlocked_exchange_nonvolatile="no"],
+ [ac_cv_interlocked_exchange_nonvolatile="yes"])
  AC_LANG_RESTORE
 ])
 if test "$ac_cv_interlocked_exchange_nonvolatile" = "yes"; then
