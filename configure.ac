@@ -41,9 +41,9 @@ AM_CONDITIONAL([GCC],
 # This requires us to #include a special header file, and also to
 # link in some windows versions of .o's instead of the unix versions.
 AH_BOTTOM([
-#if defined( __MINGW32__) || defined(__MINGW64__)
-#include "windows/port.h"
-#endif
+#if defined(__MINGW32__) || defined(__MINGW64__)
+# include "windows/port.h"
+#endif /* __MINGW32__ || __MINGW64__ */
 ])
 case ${host_os} in
   *mingw*)
@@ -72,19 +72,19 @@ AX_C___ATTRIBUTE__
 # Check whether some low-level functions/files are available...
 AC_CHECK_INCLUDES_DEFAULT
 if test "x${EGREP}" = "x"; then
-  test -z "${EGREP}"
+  test -z "${EGREP}" || unset EGREP
   AC_PROG_EGREP
 fi
 if test "x${ac_cv_header_inttypes_h}" = "x"; then
-  test -z "${ac_cv_header_inttypes_h}"
+  test -z "${ac_cv_header_inttypes_h}" || unset ac_cv_header_inttypes_h
   AC_CHECK_HEADERS([inttypes.h])
 fi
 if test "x${ac_cv_header_stdint_h}" = "x"; then
-  test -z "${ac_cv_header_stdint_h}"
+  test -z "${ac_cv_header_stdint_h}" || unset ac_cv_header_stdint_h
   AC_CHECK_HEADERS([stdint.h])
 fi
 if test "x${ac_cv_header_unistd_h}" = "x"; then
-  test -z "${ac_cv_header_unistd_h}"
+  test -z "${ac_cv_header_unistd_h}" || unset ac_cv_header_unistd_h
   AC_CHECK_HEADERS([unistd.h])
 fi
 AC_CHECK_HEADERS([stddef.h])dnl

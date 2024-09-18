@@ -12,7 +12,7 @@ AM_CXXWARNFLAGS = -Wall -Wwrite-strings -Woverloaded-virtual -Wno-sign-compare \
     -Wno-unused
 ## FIXME: clang needs to compile with a standard from before C++11 to work, but gcc
 ## needs to compile with a standard from after...
-AM_CXXFLAGS = $(AM_CXXWARNFLAGS) -std=gnu++03
+AM_CXXFLAGS = $(AM_CXXWARNFLAGS) -std=gnu++11
 endif
 
 # mingw does weird directory munging on /tmp, which causes some of our
